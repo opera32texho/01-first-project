@@ -1,5 +1,7 @@
-import { rerenderEntireTree } from "../render";
 
+let rerenderEntireTree = () =>{
+  console.log('Stage chage');
+}
 let state = {
     profilePage:{
         posts :[
@@ -41,7 +43,7 @@ let state = {
             { id: 6, message: "Yo man" }
            
           ],
-          newMessageText: 'Hi how are you ??'
+        newMessageText: 'Hi how are you ??'
     }
 
     
@@ -58,22 +60,27 @@ export let addPost = () =>{
   rerenderEntireTree(state);
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
   let newMessage = {
     id: 7,
     message : state.dialogsPage.newMessageText
   };
   state.dialogsPage.messages.push(newMessage);
+  state.dialogsPage.newMessageText = '';
   rerenderEntireTree(state);
 }
 
-export let updateNewMessageText = (newMessage) => {
-  state.dialogsPage.newMessageText = newMessage;
+export const updateNewMessageText = (newTextOfMessage) => {
+  state.dialogsPage.newMessageText = newTextOfMessage;
   rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 }
 export default state;

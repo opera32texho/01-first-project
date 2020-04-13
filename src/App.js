@@ -8,7 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Set from './components/Set/Set';
 
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 
 
 
@@ -22,7 +22,8 @@ const App = (props) => {
 
         <Route path="/dialogs"
           render={() => <Dialogs 
-                        state={props.state.dialogsPage}
+                        dialogsPage={props.state.dialogsPage}
+                        
                         updateNewMessageText={props.updateNewMessageText}
                         addMessage={props.addMessage}
                        />} />
