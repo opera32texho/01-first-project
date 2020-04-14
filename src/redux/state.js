@@ -49,39 +49,36 @@ let store = {
     _callSubscriber(){
       console.log('Stage chage');
     },
-    addPost () {
-      let newPost = {
-        id:5,
-        message: this._state.profilePage.newPostText,
-        likesCount : 0
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    },
-    
-      updateNewPostText(newText){
-      this._state.profilePage.newPostText = newText;
-      this._callSubscriber(this._state);
-    },
-    
-      addMessage () {
-      let newMessage = {
-        id: 7,
-        message : this._state.dialogsPage.newMessageText
-      };
-      this._state.dialogsPage.messages.push(newMessage);
-      this._state.dialogsPage.newMessageText = '';
-      this._callSubscriber(this._state);
-    },
-    
-      updateNewMessageText (newTextOfMessage) {
-      this._state.dialogsPage.newMessageText = newTextOfMessage;
-      this._callSubscriber(this._state);
-    },
+
     
       subscribe (observer) {
       this._callSubscriber = observer;
+    },
+    dispatch(action){
+      if (action.type === "Add-post"){
+        let newPost = {
+          id:5,
+          message: this._state.profilePage.newPostText,
+          likesCount : 0
+        };
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state);
+      }else if (action.type === "UpdateNewPostText"){
+        this._state.profilePage.newPostText = action.newText;
+        this._callSubscriber(this._state);
+      }else if (action.type === "Add-message"){
+        let newMessage = {
+          id: 7,
+          message : this._state.dialogsPage.newMessageText
+        };
+        this._state.dialogsPage.messages.push(newMessage);
+        this._state.dialogsPage.newMessageText = '';
+        this._callSubscriber(this._state);
+      }else if (action.type === 'UpdateNewMessageText'){
+        this._state.dialogsPage.newMessageText = action.newTextOfMessage;
+        this._callSubscriber(this._state);
+      }
     }
 
 }

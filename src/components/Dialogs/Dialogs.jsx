@@ -12,14 +12,14 @@ const Dialogs = (props) => {
   let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} />)
 
   let newMessageElement = React.createRef();
-
+ 
   let addMessage = () => {
-    props.addMessage();
+    props.dispatch({type:"Add-message"});
   }
 
   let onPostChange = () => {
     let text = newMessageElement.current.value;
-    props.updateNewMessageText(text);
+    props.dispatch({type: "UpdateNewMessageText",newTextOfMessage:text});
   }
 
   return (
