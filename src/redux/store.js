@@ -54,9 +54,7 @@ let store = {
     _callSubscriber(){
       console.log('Stage chage');
     },
-
-    
-      subscribe (observer) {
+    subscribe (observer) {
       this._callSubscriber = observer;
     },
     dispatch(action){
