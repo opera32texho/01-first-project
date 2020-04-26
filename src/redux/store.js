@@ -1,6 +1,6 @@
-import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
+// import profileReducer from "./profile-reducer";
+// import dialogsReducer from "./dialogs-reducer";
+// import sidebarReducer from "./sidebar-reducer";
 
 
 let store = {
@@ -63,5 +63,5 @@ let store = {
       this._state.sideBar = sidebarReducer( this._state.sidebar, action);
       this._callSubscriber(this._state);
     }
-}    
-export default store;
+// }    
+// export default store;
